@@ -6,6 +6,7 @@
 package ca.sheridancollege.project;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * The class that models your game. You should create a more specific child of this class and instantiate the methods
@@ -53,6 +54,21 @@ public abstract class Game {
     /**
      * When the game is over, use this method to declare and display a winning player.
      */
-    public abstract void declareWinner();
+    public void declareWinner(Player player1, Player player2){
+        
+        System.out.println("Game Over!");
+        System.out.println(player1.getName() + " points: " + player1.getPoints());
+        System.out.println(player2.getName() + " points: " + player2.getPoints());
+
+        if (player1.getPoints() > player2.getPoints()) {
+            System.out.println("Congratulations to " + player1.getName() + "!");
+        } else if (player2.getPoints() > player1.getPoints()) {
+            System.out.println("Congratulations to " + player2.getName() + "!");
+        } else {
+            System.out.println("It's a draw!");
+        }
+    }
+    
+    
 
 }//end class

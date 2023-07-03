@@ -19,10 +19,19 @@ public abstract class Game {
 
     private final String name;//the title of the game
     private ArrayList<Player> players;// the players of the game
+    
+     public Game() {
+        this.name = "War";
+        this.players = new ArrayList<>();
+        Player p1 = new gamePlayers("Mark");
+        Player p2 = new gamePlayers("Sam");
+        players.add(p1);
+        players.add(p2);
+    }
 
-    public Game(String name) {
+    public Game(String name, ArrayList<Player> players) {
         this.name = name;
-        players = new ArrayList();
+        this.players =players;
     }
 
     /**
@@ -53,6 +62,8 @@ public abstract class Game {
 
     /**
      * When the game is over, use this method to declare and display a winning player.
+     * @param player1
+     * @param player2
      */
     public void declareWinner(Player player1, Player player2){
         
@@ -60,9 +71,9 @@ public abstract class Game {
         System.out.println(player1.getName() + " points: " + player1.getPoints());
         System.out.println(player2.getName() + " points: " + player2.getPoints());
 
-        if (player1.getPoints() > player2.getPoints()) {
+        if (player1.getScore() > player2.getScore()) {
             System.out.println("Congratulations to " + player1.getName() + "!");
-        } else if (player2.getPoints() > player1.getPoints()) {
+        } else if (player2.getScore() > player1.getScore()) {
             System.out.println("Congratulations to " + player2.getName() + "!");
         } else {
             System.out.println("It's a draw!");

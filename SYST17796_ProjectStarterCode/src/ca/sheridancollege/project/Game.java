@@ -23,8 +23,21 @@ public abstract class Game {
      public Game() {
         this.name = "War";
         this.players = new ArrayList<>();
-        Player p1 = new gamePlayers("Mark");
-        Player p2 = new gamePlayers("Sam");
+        Player p1 = new Player("Mark"){
+        @Override
+                public void play(GroupOfCards deck){
+     
+     }
+        };
+        
+        Player p2 = new Player("Sam"){
+        
+        @Override
+        public void play(GroupOfCards deck){
+     
+     }
+        };
+        
         players.add(p1);
         players.add(p2);
     }
@@ -62,19 +75,19 @@ public abstract class Game {
 
     /**
      * When the game is over, use this method to declare and display a winning player.
-     * @param player1
-     * @param player2
+     * @param p1
+     * @param p2
      */
-    public void declareWinner(Player player1, Player player2){
+    public void declareWinner(Player p1, Player p2){
         
         System.out.println("Game Over!");
-        System.out.println(player1.getName() + " points: " + player1.getPoints());
-        System.out.println(player2.getName() + " points: " + player2.getPoints());
+        System.out.println(p1.getName() + " points: " + p1.getScore());
+        System.out.println(p2.getName() + " points: " + p2.getScore());
 
-        if (player1.getScore() > player2.getScore()) {
-            System.out.println("Congratulations to " + player1.getName() + "!");
-        } else if (player2.getScore() > player1.getScore()) {
-            System.out.println("Congratulations to " + player2.getName() + "!");
+        if (p1.getScore() > p2.getScore()) {
+            System.out.println("Congratulations to " + p1.getName() + "!");
+        } else if (p2.getScore() > p1.getScore()) {
+            System.out.println("Congratulations to " + p2.getName() + "!");
         } else {
             System.out.println("It's a draw!");
         }

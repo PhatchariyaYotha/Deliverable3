@@ -33,6 +33,10 @@ public abstract class Player {
     /**
      * @return the player name
      */
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+    
     public String getName() {
         return name;
     }
@@ -40,6 +44,7 @@ public abstract class Player {
     public int getScore() {
         return score;
     }
+    
     
     public void setScore(int score){
         this.score = score;
@@ -49,6 +54,11 @@ public abstract class Player {
     public void increaseScore(int points){
         score += points;
     }
+    
+    public void setPlayers(ArrayList<Player> players){
+        this.players = players;
+    }
+    
 
     /**
      * Ensure that the playerID is unique

@@ -13,7 +13,8 @@ package ca.sheridancollege.project;
  */
 public abstract class Player {
 
-    private String name; //the unique name for this player
+    private String name; 
+    private int score;
 
     /**
      * A constructor that allows you to set the player's unique ID
@@ -22,6 +23,7 @@ public abstract class Player {
      */
     public Player(String name) {
         this.name = name;
+        this.score = 0;        
     }
 
     /**
@@ -29,6 +31,19 @@ public abstract class Player {
      */
     public String getName() {
         return name;
+    }
+    
+    public int getScore() {
+        return score;
+    }
+    
+    public void setScore(int score){
+        this.score = score;
+    }
+    
+    
+    public void increaseScore(int points){
+        score += points;
     }
 
     /**
@@ -43,7 +58,8 @@ public abstract class Player {
     /**
      * The method to be overridden when you subclass the Player class with your specific type of Player and filled in
      * with logic to play your game.
+     * @param deck
      */
-    public abstract void play();
+    public abstract void play(GroupOfCards deck);
 
 }

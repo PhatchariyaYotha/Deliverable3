@@ -18,7 +18,7 @@ import java.util.Collections;
 public class GroupOfCards {
 
     //The group of cards, stored in an ArrayList
-    private ArrayList<Card> cards;
+    private final ArrayList<Card> cards;
     private int size;//the size of the grouping
 
     public GroupOfCards(int size) {
@@ -51,6 +51,26 @@ public class GroupOfCards {
      */
     public void setSize(int size) {
         this.size = size;
+    }
+    
+     /**
+     * Add a card to the group.
+     *
+     * @param card the card to add
+     */
+    public void addCard(Card card) {
+        if (cards.size() < size) {
+            cards.add(card);
+        }
+    }
+
+    /**
+     * Remove a card from the group.
+     *
+     * @param card the card to remove
+     */
+    public void removeCard(Card card) {
+        cards.remove(card);
     }
 
 }//end class

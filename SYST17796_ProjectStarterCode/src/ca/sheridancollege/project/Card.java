@@ -34,6 +34,15 @@ public abstract class Card {
         return rank + "of" +suit;
     }
     
+    public Card playCard() {
+        // In the War card game, a player plays the top card from their hand
+        return (Card) getHand(0);
+    }
+
+    private Object getHand(int par) {
+        return null;
+    }
+    
     public enum Rank{
         ACE(1),
         TWO(2),

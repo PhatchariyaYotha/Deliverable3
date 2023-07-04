@@ -71,13 +71,54 @@ public abstract class Game {
     /**
      * Play the game. This might be one method or many method calls depending on your game.
      */
-    public abstract void play();
+    public void play(){
+        GroupOfCards deck = new GroupOfCards(52);
+        deck.shuffle();
 
-    /**
-     * When the game is over, use this method to declare and display a winning player.
-     * @param p1
-     * @param p2
-     */
+        // Deal the cards to the players
+        for (Player player : getPlayers()) {
+            for (int i = 0; i < deck.getSize() / getPlayers().size(); i++) {
+                Card card = deck.getCards().remove(0);
+                player.addCardToHand(card);
+            }
+        }
+
+        while (true) {
+            // Each player plays a card
+            Card card1 = getPlayers().get(0).playCard();
+            Card card2 = getPlayers().get(1).playCard();
+
+            System.out.println(getPlayers().get(0).getName() + " plays " + card1);
+            System.out.println(getPlayers().get(1).getName() + " plays " + card2);
+
+            // Determine the winner of the round
+            Player roundWinner;
+            if (card1.getRank().ordinal() > card2.getRank().ordinal()) {
+                roundWinner = getPlayers().get(0);
+            } else if (card2.getRank().ordinal() > card1.getRank().ordinal()) {
+                roundWinner = getPlayers().get(1);
+            } else {
+                roundWinner = null; // It's a draw
+            }
+
+            if (roundWinner != null) {
+                roundWinner.addCardToHand(card1);
+                roundWinner.addCardToHand(card2);
+                System.out.println("Round winner: " + roundWinner.getName());
+            } else {
+                System.out.println("It's a draw!");
+            }
+            System.out.println();
+
+            // Check if any player has won the game
+            if (getPlayers().get(0).hasWon() || getPlayers().get(1).hasWon()) {
+                declareWinner(getPlayers().get(0), getPlayers().get(1));
+                break;
+            }
+        }
+    
+    }
+
     public void declareWinner(Player p1, Player p2){
         
         System.out.println("Game Over!");

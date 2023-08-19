@@ -13,4 +13,30 @@ public class Player {
     private int score;
     private GroupOfCard hand;
     
+    public Player(String name){
+        this.name = name;
+        this.score = 0;
+        this.hand = new GroupOfCard();
+    }
+    
+    public String getNanme(){
+        return name;
+    }
+    
+    public int getScore(){
+        return score;
+    }
+    
+    public void setScore(int score){
+        this.score = score;
+    }
+    
+    public void increaseScore(int points){
+        score += points;
+    }
+    
+    public void addCardToHand(Card card){
+        hand.addCard(card);
+    }
+    
 }

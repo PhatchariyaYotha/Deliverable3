@@ -23,6 +23,31 @@ public class Game {
         
     }
     
+    public String getName(){
+        return name;
+    }
+    
+    public ArrayList<Player>getPlayers(){
+        return players;
+    }
+    
+    public void setPlayers(ArrayList<Player> players){
+        this.players = players;
+    }
+    
+    public void setTimer(int timeLimit){
+        this.timer = timeLimit;
+    }
+    
+    public void play(){
+        GroupOfCard deck = new GroupOfCard();
+        for (Rank rank : Rank.values()){
+            for (int i = 0; i<players.size();i++){
+                players.get(i).addCardToHand(new Card(rank));
+            }
+        }
+    }
+    
 
 
  

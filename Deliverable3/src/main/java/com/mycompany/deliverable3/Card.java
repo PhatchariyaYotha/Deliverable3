@@ -15,6 +15,19 @@ public class Card {
         this.rank = rank;
     }
     
+    /**
+     *
+     * @return
+     */
+    public Rank getRank(){
+        return rank;
+    }
+    
+    @Override
+    public String toString(){
+        return rank.toString();
+    }
+    
     
 }
 
